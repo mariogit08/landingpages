@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residencial Vista Verde — Apartamento de Alto Padrão no Brooklin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E2C97E;
+      --dark: #0D0D0B;
+      --dark-2: #161612;
+      --dark-3: #1E1E19;
+      --dark-4: #252520;
+      --cream: #F5F0E8;
+      --cream-dim: #C8C0AF;
+      --text: #E8E2D8;
+      --text-dim: #8A8478;
+      --border: rgba(201,168,76,0.18);
+      --radius: 4px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(13,13,11,0.6) 0%, rgba(13,13,11,0.4) 40%, rgba(13,13,11,0.95) 80%, var(--dark) 100%),
+        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80') center/cover no-repeat;
+      transform: scale(1.05);
+      animation: heroZoom 12s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1.0); }
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      border: 1px solid var(--border);
+      background: rgba(13,13,11,0.7);
+      backdrop-filter: blur(12px);
+      padding: 0.5rem 1.2rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 3rem 2rem;
+      max-width: 900px;
+      animation: fadeUp 1s 0.3s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      background: rgba(13, 13, 11, 0.5);
+      backdrop-filter: blur(6px);
+      padding: 1.2rem 1.8rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      width: fit-content;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .hero-meta-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .hero-meta-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--cream);
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      transition: background 0.2s, gap 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      cursor: pointer;
+    }
+
+    .hero-cta:hover { background: var(--gold-light); gap: 1.2rem; }
+
+    .hero-cta svg { width: 14px; height: 14px; }
+
+    /* ── SCROLL INDICATOR ── */
+    .scroll-line {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--cream-dim);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      z-index: 2;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    .scroll-line::after {
+      content: '';
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50%       { opacity: 1; }
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 6rem 2rem; }
+
+    .container { max-width: 1080px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--cream);
+      margin-bottom: 2rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 320px 220px;
+      gap: 4px;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-grid img:hover { transform: scale(1.03); }
+
+    .gallery-grid .main-photo { grid-row: 1 / 3; }
+
+    /* ── FEATURES ── */
+    .features-section { background: var(--dark-2); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2px;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: var(--dark-3);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      border-top: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .feature-card:hover { background: var(--dark-4); }
+
+    .feature-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .feature-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .feature-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--cream);
+    }
+
+    /* ── DESCRIPTION ── */
+    .desc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .desc-text p {
+      color: var(--cream-dim);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .amenities-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .amenities-list li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--cream-dim);
+      font-size: 0.9rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .amenities-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── MAP PLACEHOLDER ── */
+    .map-section { background: var(--dark-2); }
+
+    .map-box {
+      margin-top: 2rem;
+      height: 280px;
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+
+    .map-box-icon { font-size: 2rem; }
+
+    .location-tags {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .location-tag {
+      border: 1px solid var(--border);
+      padding: 0.4rem 1rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--cream-dim);
+    }
+
+    /* ── FORM SECTION ── */
+    .form-section {
+      background: var(--dark);
+      position: relative;
+    }
+
+    .form-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .form-wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .form-intro {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .form-intro p {
+      color: var(--cream-dim);
+      font-size: 0.95rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Progress bar */
+    .progress-track {
+      height: 2px;
+      background: var(--dark-3);
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--gold), var(--gold-light));
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+
+    .progress-label {
+      position: absolute;
+      right: 0;
+      top: 6px;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+    }
+
+    /* Steps */
+    .form-step { display: none; animation: fadeUp 0.4s both; }
+    .form-step.active { display: block; }
+
+    .step-question {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+      font-weight: 300;
+      line-height: 1.3;
+    }
+
+    .step-hint {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 2rem;
+    }
+
+    /* Options */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .option-btn {
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      padding: 1.2rem 1.4rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      border-radius: var(--radius);
+    }
+
+    .option-btn .opt-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    .option-btn:hover {
+      border-color: var(--gold);
+      background: var(--dark-4);
+      color: var(--cream);
+    }
+
+    .option-btn.selected {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.08);
+      color: var(--gold-light);
+    }
+
+    /* Text input */
+    .text-input-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .text-input-wrap label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .form-input {
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      padding: 1rem 1.2rem;
+      outline: none;
+      border-radius: var(--radius);
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-input:focus { border-color: var(--gold); }
+    .form-input::placeholder { color: var(--text-dim); }
+
+    /* Nav buttons */
+    .step-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.5rem;
+    }
+
+    .btn-back {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .btn-back:hover { color: var(--cream); }
+
+    .btn-next {
+      background: var(--gold);
+      border: none;
+      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: background 0.2s, gap 0.2s;
+      border-radius: var(--radius);
+    }
+
+    .btn-next:hover { background: var(--gold-light); gap: 1rem; }
+    .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ── RESULT ── */
+    #result-screen {
+      display: none;
+      text-align: center;
+      animation: fadeUp 0.6s both;
+    }
+
+    .result-check {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-size: 2rem;
+    }
+
+    .result-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--cream);
+      margin-bottom: 0.8rem;
+    }
+
+    .result-desc {
+      color: var(--cream-dim);
+      font-size: 0.9rem;
+      max-width: 420px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+
+    .result-info {
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+      font-size: 0.85rem;
+      color: var(--cream-dim);
+      line-height: 1.7;
+    }
+
+    .result-info strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+
+    .wpp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #25D366;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.8rem 1.8rem;
+      margin-top: 1.2rem;
+      border-radius: var(--radius);
+      transition: opacity 0.2s;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .wpp-btn:hover { opacity: 0.88; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .hero-meta { flex-direction: column; gap: 1rem; width: 100%; }
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: 260px 180px 180px; }
+      .gallery-grid .main-photo { grid-row: auto; }
+      .desc-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .options-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════ HERO ══════════════════ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-badge">Pronto para morar</div>
+    <div class="scroll-line">scroll</div>
+
+    <div class="hero-content container">
+      <p class="hero-eyebrow">Viva o melhor do Brooklin</p>
+      <h1 class="hero-title">
+        Residencial<br>
+        <em>Vista Verde</em>
+      </h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Área</span>
+          <span class="hero-meta-value">142 m²</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Quartos</span>
+          <span class="hero-meta-value">3 suítes</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Vagas</span>
+          <span class="hero-meta-value">2 + moto</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Valor</span>
+          <span class="hero-meta-value">R$ 1.290.000</span>
+        </div>
+      </div>
+      <a href="#atendimento" class="hero-cta" id="btn-hero-cta">
+        Falar com um Especialista
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M1 7h12M8 2l5 5-5 5"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════ GALLERY ══════════════════ -->
+  <section style="padding: 0; background: var(--dark);">
+    <div class="container" style="padding: 4px 0;">
+      <div class="gallery-grid">
+        <img class="main-photo" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80" alt="Sala principal" />
+        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80" alt="Cozinha" />
+        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80" alt="Banheiro suite" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FEATURES ══════════════════ -->
+  <section class="features-section">
+    <div class="container">
+      <p class="section-label reveal">Diferenciais</p>
+      <h2 class="section-title reveal">Alto padrão em cada<br>metro quadrado</h2>
+      <div class="features-grid reveal">
+        <div class="feature-card">
+          <span class="feature-icon">📐</span>
+          <span class="feature-label">Área privativa</span>
+          <span class="feature-value">142 m²</span>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🛏</span>
+          <span class="feature-label">Suítes</span>
+          <span class="feature-value">3 suítes</span>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🚗</span>
+          <span class="feature-label">Garagem</span>
+          <span class="feature-value">2 vagas</span>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🏊</span>
+          <span class="feature-label">Lazer</span>
+          <span class="feature-value">Piscina + spa</span>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🏢</span>
+          <span class="feature-label">Andar</span>
+          <span class="feature-value">14º alto</span>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">📅</span>
+          <span class="feature-label">Status</span>
+          <span class="feature-value">Pronto p/ morar</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ DESCRIPTION ══════════════════ -->
+  <section>
+    <div class="container">
+      <div class="desc-layout">
+        <div class="desc-text reveal">
+          <p class="section-label">O Empreendimento</p>
+          <h2 class="section-title" style="font-size: clamp(1.6rem, 3vw, 2.4rem);">Design, sofisticação e natureza em perfeita harmonia</h2>
+          <div class="divider"></div>
+          <p>Localizado no coração do Brooklin, o Residencial Vista Verde reúne acabamento premium, planta inteligente e infraestrutura completa de lazer em um endereço que valoriza seu patrimônio e a sua qualidade de vida.</p>
+          <p>A sala integrada com varanda gourmet entrega uma vista livre permanente para o parque, com um pôr do sol exclusivo emoldurado por vidros do piso ao teto.</p>
+          <p>Cozinha moderna com ilha central e bancadas em granito de exportação. Suíte master com closet espaçoso e sala de banho com banheira de imersão.</p>
+        </div>
+        <div class="reveal" style="padding-top: 3.5rem;">
+          <p class="section-label" style="margin-bottom: 1.5rem;">Infraestrutura de Lazer Premium</p>
+          <ul class="amenities-list">
+            <li>Academia de alta performance com equipamentos profissionais</li>
+            <li>Piscina adulto e infantil climatizada com deck molhado</li>
+            <li>Espaço gourmet completo e salão de festas privativo</li>
+            <li>Coworking equipado e sala de reuniões</li>
+            <li>Portaria blindada 24h com sistema avançado de câmeras</li>
+            <li>Pet place arborizado e bicicletário</li>
+            <li>Gerador full para áreas comuns e elevadores</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ LOCALIZAÇÃO ══════════════════ -->
+  <section class="map-section">
+    <div class="container">
+      <p class="section-label reveal">Localização Estratégica</p>
+      <h2 class="section-title reveal">A 5 minutos de tudo<br>o que importa</h2>
+      <div class="map-box reveal">
+        <span class="map-box-icon">📍</span>
+        <span>Rua Funchal, 418 — Brooklin, São Paulo</span>
+      </div>
+      <div class="location-tags reveal">
+        <span class="location-tag">🛒 Shopping Vila Olímpia · 800m</span>
+        <span class="location-tag">🚇 Estação Berrini · 1,2km</span>
+        <span class="location-tag">🏫 Escolas Internacionais · 600m</span>
+        <span class="location-tag">🌳 Parque Ibirapuera · 4km</span>
+        <span class="location-tag">✈️ Aeroporto Congonhas · 8km</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FORM / QUALIFICAÇÃO ══════════════════ -->
+  <section class="form-section" id="atendimento">
+    <div class="container">
+      <div class="form-wrapper">
+        <div class="form-intro reveal">
+          <p class="section-label" style="margin-bottom: 0.8rem;">Atendimento Exclusivo</p>
+          <h2 class="section-title">Receba a apresentação e agende sua visita</h2>
+          <p>Responda 4 perguntas rápidas para que nosso especialista prepare um atendimento direto e alinhado ao seu momento de compra.</p>
+        </div>
+
+        <div id="form-area">
+          <!-- Progress -->
+          <div class="progress-track">
+            <div class="progress-fill" id="progress"></div>
+            <span class="progress-label" id="progress-label">1 / 4</span>
+          </div>
+
+          <!-- Step 1 -->
+          <div class="form-step active" id="step-1">
+            <h3 class="step-question">Qual é o seu momento de compra atual?</h3>
+            <p class="step-hint">Selecione o objetivo principal da sua busca</p>
+            <div class="options-grid">
+              <button class="option-btn" data-step="1" data-value="moradia" data-score="3">
+                <span class="opt-icon">🏠</span> Moradia para a família
+              </button>
+              <button class="option-btn" data-step="1" data-value="investimento" data-score="2">
+                <span class="opt-icon">📈</span> Investimento / Rentabilidade
+              </button>
+              <button class="option-btn" data-step="1" data-value="misto" data-score="2">
+                <span class="opt-icon">🔄</span> Upgrade de moradia e ativo
+              </button>
+              <button class="option-btn" data-step="1" data-value="curioso" data-score="0">
+                <span class="opt-icon">👀</span> Apenas conhecendo o mercado
+              </button>
+            </div>
+            <div class="step-nav">
+              <span></span>
+              <button class="btn-next" id="next-1" disabled onclick="nextStep(1)">
+                Continuar
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="form-step" id="step-2">
+            <h3 class="step-question">Quando você planeja realizar a mudança?</h3>
+            <p class="step-hint">Para organizarmos a disponibilidade do apartamento</p>
+            <div class="options-grid">
+              <button class="option-btn" data-step="2" data-value="imediato" data-score="3">
+                <span class="opt-icon">⚡</span> Imediatamente (até 30 dias)
+              </button>
+              <button class="option-btn" data-step="2" data-value="curto" data-score="2">
+                <span class="opt-icon">📅</span> Curto prazo (1 a 3 meses)
+              </button>
+              <button class="option-btn" data-step="2" data-value="medio" data-score="1">
+                <span class="opt-icon">🗓</span> Planejamento (3 a 6 meses)
+              </button>
+              <button class="option-btn" data-step="2" data-value="sem_pressa" data-score="0">
+                <span class="opt-icon">🕐</span> Ainda não defini um prazo
+              </button>
+            </div>
+            <div class="step-nav">
+              <button class="btn-back" onclick="prevStep(2)">← Voltar</button>
+              <button class="btn-next" id="next-2" disabled onclick="nextStep(2)">
+                Continuar
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="form-step" id="step-3">
+            <h3 class="step-question">Qual a sua preferência de pagamento?</h3>
+            <p class="step-hint">Isso nos ajuda a apresentar os melhores cenários e propostas</p>
+            <div class="options-grid">
+              <button class="option-btn" data-step="3" data-value="avista" data-score="3">
+                <span class="opt-icon">💰</span> Recursos próprios (À vista)
+              </button>
+              <button class="option-btn" data-step="3" data-value="aprovado" data-score="3">
+                <span class="opt-icon">✅</span> Financiamento já pré-aprovado
+              </button>
+              <button class="option-btn" data-step="3" data-value="aprovar" data-score="2">
+                <span class="opt-icon">📋</span> Pretendo buscar financiamento
+              </button>
+              <button class="option-btn" data-step="3" data-value="nao_sei" data-score="0">
+                <span class="opt-icon">❓</span> Estudando as possibilidades
+              </button>
+            </div>
+            <div class="step-nav">
+              <button class="btn-back" onclick="prevStep(3)">← Voltar</button>
+              <button class="btn-next" id="next-3" disabled onclick="nextStep(3)">
+                Continuar
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 4 — Contato -->
+          <div class="form-step" id="step-4">
+            <h3 class="step-question">Para onde enviamos a apresentação completa?</h3>
+            <p class="step-hint">Seus dados estão protegidos. O contato é feito apenas pelo especialista responsável.</p>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div class="text-input-wrap">
+                <label>Seu nome</label>
+                <input type="text" class="form-input" id="input-nome" placeholder="Nome completo" oninput="checkStep4()" />
+              </div>
+              <div class="text-input-wrap">
+                <label>WhatsApp</label>
+                <input type="tel" class="form-input" id="input-phone" placeholder="(11) 99999-9999" oninput="checkStep4()" />
+              </div>
+            </div>
+            <div class="step-nav">
+              <button class="btn-back" onclick="prevStep(4)">← Voltar</button>
+              <button class="btn-next" id="next-4" disabled onclick="submitForm()">
+                Receber material no WhatsApp
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ RESULT ══ -->
+        <div id="result-screen">
+          <div class="result-check">✓</div>
+          <h2 class="result-title">Tudo pronto!</h2>
+          <p class="result-desc" id="result-desc"></p>
+          <div class="result-info">
+            <strong id="result-name"></strong>
+            Seu material já foi separado. Para agilizar o atendimento, inicie a conversa com nosso especialista agora mesmo.
+            <a class="wpp-btn" id="result-wpp" href="#" target="_blank">
+              💬 Iniciar conversa no WhatsApp
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer>
+    <p>Residencial Vista Verde · Empreendimento Alto Padrão</p>
+    <p style="margin-top: 0.4rem; font-size: 0.65rem;">As informações deste material são de responsabilidade da gestão comercial do imóvel.</p>
+  </footer>
+
+  <script>
+    // ── Prevenir reload do botão Hero
+    document.getElementById('btn-hero-cta').addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.getElementById('atendimento');
+      window.scrollTo({
+        top: target.offsetTop - 40,
+        behavior: 'smooth'
+      });
+    });
+
+    // ── Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── Form state
+    const state = { step: 1, scores: {}, answers: {} };
+    const TOTAL_STEPS = 4;
+
+    function updateProgress(step) {
+      const pct = ((step - 1) / TOTAL_STEPS) * 100;
+      document.getElementById('progress').style.width = pct + '%';
+      document.getElementById('progress-label').textContent = step + ' / ' + TOTAL_STEPS;
+    }
+
+    // Option click
+    document.querySelectorAll('.option-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const step = this.dataset.step;
+        document.querySelectorAll(`.option-btn[data-step="${step}"]`).forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        state.scores[step] = parseInt(this.dataset.score);
+        state.answers[step] = this.dataset.value;
+        document.getElementById('next-' + step).disabled = false;
+      });
+    });
+
+    function nextStep(current) {
+      document.getElementById('step-' + current).classList.remove('active');
+      const next = current + 1;
+      document.getElementById('step-' + next).classList.add('active');
+      state.step = next;
+      updateProgress(next);
+    }
+
+    function prevStep(current) {
+      document.getElementById('step-' + current).classList.remove('active');
+      const prev = current - 1;
+      document.getElementById('step-' + prev).classList.add('active');
+      state.step = prev;
+      updateProgress(prev);
+    }
+
+    function checkStep4() {
+      const nome = document.getElementById('input-nome').value.trim();
+      const phone = document.getElementById('input-phone').value.trim();
+      document.getElementById('next-4').disabled = !(nome.length >= 2 && phone.length >= 8);
+    }
+
+    // ── Score calculation
+    function calcScore() {
+      const total = Object.values(state.scores).reduce((a, b) => a + b, 0);
+      const max = 9; // 3+3+3
+      return Math.round((total / max) * 100);
+    }
+
+    function submitForm() {
+      const score = calcScore();
+      const nome = document.getElementById('input-nome').value.trim();
+      const phone = document.getElementById('input-phone').value.trim();
+
+      // Score label — só para o corretor, invisível para o lead
+      let scoreLabel;
+      if (score >= 70)      scoreLabel = 'QUENTE';
+      else if (score >= 40) scoreLabel = 'MORNO';
+      else                  scoreLabel = 'FRIO';
+
+      // Esconde form, mostra confirmação simples
+      document.getElementById('form-area').style.display = 'none';
+      document.getElementById('result-screen').style.display = 'block';
+
+      // Mensagem genérica para o lead
+      document.getElementById('result-name').textContent = 'Olá, ' + nome.split(' ')[0] + '!';
+      document.getElementById('result-desc').textContent =
+        'Recebemos sua solicitação. Nosso especialista entrará em contato com você pelo WhatsApp em instantes com a apresentação completa do imóvel.';
+
+      // Botão de contato — lead clica se quiser
+      const wppCorretor = '5581995252290';
+      const msgLead = encodeURIComponent('Olá! Me chamo ' + nome + ' e gostaria de receber a apresentação do Residencial Vista Verde.');
+      document.getElementById('result-wpp').href = 'https://wa.me/' + wppCorretor + '?text=' + msgLead;
+
+      window.scrollTo({ top: document.getElementById('atendimento').offsetTop - 40, behavior: 'smooth' });
+    }
+
+    // Init
+    updateProgress(1);
+  </script>
+</body>
+</html>
